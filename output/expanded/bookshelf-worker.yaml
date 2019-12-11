@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: bookshelf
+    app.kubernetes.io/managed-by: gcp-cloud-build-deploy
+  name: bookshelf-worker
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: bookshelf
+        app.kubernetes.io/managed-by: gcp-cloud-build-deploy
+        tier: worker
+    spec:
+      containers:
+      - env:
+        - name: PROCESSES
+          value: worker
+        image: gcr.io/enterprisedemos-258322/bookshelf
+        imagePullPolicy: Always
+        name: bookshelf-app
