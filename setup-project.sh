@@ -6,7 +6,7 @@ gcloud config set project $PROJECT_ID
 gcloud services enable container.googleapis.com
 gcloud services enable containerregistry.googleapis.com
 gcloud beta services enable cloudbuild.googleapis.com
-gcloud project add-iam-policy-binding $PROJECT_ID \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member serviceAccount:$PROJECT_NUM@cloudbuild.gserviceaccount.com \
   --role roles/appengine.appAdmin \
   --role roles/container.admin \
