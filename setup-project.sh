@@ -8,8 +8,12 @@ gcloud services enable containerregistry.googleapis.com
 gcloud beta services enable cloudbuild.googleapis.com
 gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member serviceAccount:$PROJECT_NUM@cloudbuild.gserviceaccount.com \
-  --role roles/appengine.appAdmin \
-  --role roles/container.admin \
+  --role roles/appengine.appAdmin
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member serviceAccount:$PROJECT_NUM@cloudbuild.gserviceaccount.com \
+  --role roles/container.admin
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member serviceAccount:$PROJECT_NUM@cloudbuild.gserviceaccount.com \
   --role roles/storage.admin
 gcloud auth configure-docker -q
 gcloud container clusters create bookshelf \
